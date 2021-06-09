@@ -27,7 +27,6 @@
             width: 30%;
             position: absolute;
             display:flex;
-            transition: transform 4s ease;
             justify-content: center;
             z-index: 1;
             align-items: center;
@@ -50,9 +49,6 @@
             cursor: pointer;
             position: absolute;
 
-        }
-        .hover:hover ~ .container{
-            transform: rotateY(1turn);
         }
         @keyframes front {
             49%{
@@ -81,37 +77,31 @@
         }
         @keyframes lefts {
             50%{
-                left: -50px;
+                left: -60px;
             }
             100%{
-                left: 30px;
+                left: 50px;
             }
         }
         @keyframes rights {
             50%{
-                right: -50px;
+                right: -60px;
             }
             100%{
-                right: 30px;
+                right: 50px;
             }
         }
         @keyframes leftsr {
-            0%{
-                left: 30px;
-            }
             50%{
-                left: -50px;
+                left: -80px;
             }
             100%{
                 left: 50px;
             }
         }
         @keyframes rightsr {
-            0%{
-                right: 30px;
-            }
             50%{
-                right: -50px;
+                right: -80px;
             }
             100%{
                 right: 50px;
@@ -151,6 +141,7 @@
         }
         .back{
             border-radius: 10px;
+            transition:all .2s ease;
         }
         .back2{
             height: 100px;
@@ -189,15 +180,19 @@
     </div>
     <script>
         $(".hover").mouseenter(function(){
+            $(".container").css("transform","rotateY(1turn)");
+            $(".container").css("transition","transform 5s ease");
             $(".container2").css("animation","front 5s ease forwards");
             $(".back1").css("animation","lefts 5s ease forwards");
-            $(".back2").css("animation","rights 5s ease forwards");
-            $(".back3").css("animation","lefts 5s ease forwards");
+            $(".back2").css("animation","rights 5s .5s ease forwards");
+            $(".back3").css("animation","lefts 5s 1s ease forwards");
         });
         $(".hover").mouseleave(function(){
+            $(".container").css("transform","rotateY(0turn)");
+            $(".container").css("transition","transform 0s ease");
             $(".container2").css("animation","back 5s ease forwards");
-            $(".back1").css("animation","leftsr 5s ease forwards");
-            $(".back2").css("animation","rightsr 5s ease forwards");
+            $(".back1").css("animation","leftsr 5s 1s ease forwards");
+            $(".back2").css("animation","rightsr 5s .5s ease forwards");
             $(".back3").css("animation","leftsr 5s ease forwards");
         });
     </script>
